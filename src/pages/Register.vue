@@ -60,8 +60,6 @@
         },
         methods: {
             register() {
-                console.log('Register clicked');
-                
                 this.$store
                     .dispatch('auth/register', {
                         body: this.form.body, // VueResource

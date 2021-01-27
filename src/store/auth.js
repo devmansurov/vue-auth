@@ -30,42 +30,6 @@ export default {
     },
 
     actions: {
-        fetch(data) {
-            console.log("FETCH DATA");
-            console.log(data);
-            return Vue.auth.fetch(data);
-        },
-
-        refresh(data) {
-            return Vue.auth.refresh(data);
-        },
-
-        login(ctx, data) {
-            data = data || {};
-
-            return new Promise((resolve, reject) => {
-                Vue.auth.login({
-                    url: 'auth/login',
-                    data: data.body,
-                    remember: data.remember,
-                    staySignedIn: data.staySignedIn,
-                })
-                .then((res) => {
-                    if (data.remember) {
-                        Vue.auth.remember(JSON.stringify({
-                            name: ctx.getters.user.first_name
-                        }));
-                    }
-
-                    Vue.router.push({
-                        name: ctx.getters.user.type + '-landing'
-                    });
-
-                    resolve(res);
-                }, reject);
-            });
-        },
-
         register(ctx, data) {
             data = data || {};
 
@@ -82,32 +46,11 @@ export default {
                 }, reject);
             });
         },
-
-        impersonate(data) {
-            Vue.auth.impersonate({
-                url: 'auth/' + data.user.id + '/impersonate',
-                redirect: 'user-account'
-            });
-        },
-
-        unimpersonate() {
-            Vue.auth.unimpersonate({
-                redirect: 'admin-users'
-            });
-        },    
-
-        logout() {
-            return Vue.auth.logout();
-        },
     },
 
     getters: {
         user() {
             return Vue.auth.user();
         },
-
-        impersonating() {
-            return Vue.auth.impersonating();
-        }
     }
 }
