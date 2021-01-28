@@ -21,6 +21,6 @@ new Vue({
     store: store,
     router: router,
     config: config,
-    beforeCreate() { this.$store.commit('auth/setUser');},
+    // beforeCreate() { this.$store.commit('auth/setUser');},
     render: h => h(App)
 });

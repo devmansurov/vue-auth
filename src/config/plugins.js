@@ -6,14 +6,12 @@ import driverRouterVueRouter from '@websanova/vue-auth/src/drivers/router/vue-ro
 
 Vue.use(auth, {
     plugins: {
-        http: Vue.axios, // Axios
-        // http: Vue.http, // Vue Resource
+        http: Vue.axios,
         router: Vue.router,
     },
     drivers: {
         auth: driverAuthBearer,
-        http: driverHttpAxios, // Axios
-        // http: driverHttpVueResource, // Vue Resource
+        http: driverHttpAxios,
         router: driverRouterVueRouter,
 
     },
@@ -40,5 +38,8 @@ Vue.use(auth, {
         tokenDefaultKey:     'auth_token_default',
         tokenImpersonateKey: 'auth_token_impersonate',
         stores: ['storage', 'cookie'],
+        parseUserData: function(data) {
+            return data;
+        }
     }
 });

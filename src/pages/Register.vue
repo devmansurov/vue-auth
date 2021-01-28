@@ -62,8 +62,7 @@
             register() {
                 this.$store
                     .dispatch('auth/register', {
-                        body: this.form.body, // VueResource
-                        data: this.form.body, // Axios
+                        data: this.form.body,
                         remember: this.form.remember,
                         fetchUser: this.form.fetchUser,
                         autoLogin: this.form.autoLogin,

@@ -17,7 +17,7 @@ Vue.router = new VueRouter({
             name: 'home',
             component: loadView('Home'),
             meta: {
-                auth: ['admin', 'user']
+                auth: true
             }
         },
         {

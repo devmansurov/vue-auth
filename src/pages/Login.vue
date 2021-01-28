@@ -39,7 +39,7 @@
                     data: this.form.body,
                     rememberMe: true,
                     fetchUser: true
-                });
+                })
             },
         }
     }
